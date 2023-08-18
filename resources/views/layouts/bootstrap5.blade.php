@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="{{ asset('bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('bootstrap-icons.min.css') }}">
     <script src="{{ asset('bootstrap.bundle.js') }}"></script>
+    <style>
+      .gradasi {
+        background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
+        color: white;
+        border-radius:20px;
+        border: 0px;
+      }
+    </style>
 </head>
 <body>
     {{-- navigasi --}}
