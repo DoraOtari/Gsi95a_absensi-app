@@ -13,7 +13,7 @@ class JabatanController extends Controller
 
     public function tambah()
     {
-        #
+        
     }
 
     public function edit()
