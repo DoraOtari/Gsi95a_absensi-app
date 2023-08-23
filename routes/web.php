@@ -33,5 +33,5 @@ require __DIR__.'/auth.php';
 
 Route::controller(UserController::class)->group(function(){
     Route::get('/profil', 'profil')->name('profil');
-    Route::post('/profil', 'upload')->name('upload foto');
+    Route::patch('/profil', 'upload')->name('upload foto');
 });

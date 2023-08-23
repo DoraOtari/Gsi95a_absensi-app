@@ -14,6 +14,7 @@ class UserController extends Controller
 
     public function upload(){
         $lokasi = request('foto_profil')->store('Avatars');
+        // dd(request()->all());
         User::where('id', request('id'))->update([ 'foto_profil' => $lokasi ]);
         return to_route('profil');
     }

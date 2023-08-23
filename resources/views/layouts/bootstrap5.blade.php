@@ -32,34 +32,49 @@
             </div>
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-start align-items-center flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li>
+                @auth
+                  <li class="nav-item">
+                    <a class="nav-link {{ Request::is('dashboard') ? 'gradasi' : '' }}" href="{{ route('dashboard') }}">
+                      <i class="bi-buildings"></i> Dashboard
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {{ Request::is('profil') ? 'gradasi' : '' }}" href="{{ route('profil') }}">
+                      <i class="bi-person"></i> Profil
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {{ Request::is('jabatan') ? 'gradasi' : '' }}" href="{{ route('jabatan') }}">
+                      <i class="bi-chevron-double-up"></i> Jabatan
+                    </a>
+                  </li>
+                @endauth
               </ul>
-              <form class="d-flex mt-3 gap-2" role="search">
-                <a href="{{ route('register') }}" class="nav-link"><i class="bi-person-plus"></i> Register</a>
-                <a href="{{ route('login') }}" class="nav-link"><i class="bi-lock"></i> Login</a>
-              </form>
+              <div class="d-flex mt-3 gap-2" role="search">
+                @auth
+                  <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-sm rounded-circle btn-danger">
+                      <i class="bi-power"></i>
+                    </button>
+                  </form>
+                @else
+                  <a href="{{ route('register') }}" class="nav-link">
+                    <i class="bi-person-plus"></i> Register
+                  </a>
+                  <a href="{{ route('login') }}" class="nav-link"><i class="bi-lock"></i> Login</a>
+                @endauth
+              </div>
             </div>
           </div>
         </div>
       </nav>
+      <div class="ms-3" id="gambar_profil">
+        @auth
+          <img class="img-thumbnail rounded-circle" style="aspect-ratio:1/1" src="{{ asset('storage/'.Auth::user()->foto_profil) }}" width="50">
+          <b class="lead">{{ Auth::user()->name }}</b>
+        @endauth
+      </div>
       {{-- konten --}}
       <main class="vh-100 continer-fluid px-0">
         @yield('konten')

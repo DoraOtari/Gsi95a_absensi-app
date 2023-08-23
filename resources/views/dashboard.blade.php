@@ -6,7 +6,7 @@
             <p class="lead">Hi {{ Auth::user()->name }}, Selamat datang di dashboard aplikasi absensi</p>
             <figure>
                 <blockquote class="blockquote">
-                  <p class="text-success">Aku pernah menjadi pelangi untuk kamu yang ternyata buta warna</p>
+                  <p class="text-success">"Aku pernah menjadi pelangi untuk kamu yang ternyata buta warna"</p>
                 </blockquote>
                 <figcaption class="blockquote-footer">
                   Fahri Skroepp

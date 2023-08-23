@@ -1,0 +1,4 @@
+1. setelah di ekstrak jalankan perintah di terminal : Composer Update
+2. pindahkan file .env lama kalian ke folder yg baru kalian ekstrak ini
+3. ketik perintah php artisan serve
+4. kunci aplikasinya di chrome localhost:8000
