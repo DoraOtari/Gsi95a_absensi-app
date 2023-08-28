@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +35,11 @@ require __DIR__.'/auth.php';
 Route::controller(UserController::class)->group(function(){
     Route::get('/profil', 'profil')->name('profil');
     Route::patch('/profil', 'upload')->name('upload foto');
+});
+
+Route::controller(JabatanController::class)->group(function(){
+    Route::get('/jabatan', 'tampil')->name('jabatan');
+    Route::get('/jabatan/tambah', 'tambah')->name('tambah jabatan');
+    Route::get('/jabatan/{jabatan}/edit', 'edit')->name('edit jabatan');
+    Route::post('/jabatan', 'simpan')->name('simpan jabatan');
 });

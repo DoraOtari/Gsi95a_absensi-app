@@ -8,17 +8,17 @@ class JabatanController extends Controller
 {
     public function tampil()
     {
-        
+        return view('jabatan.tampil');
     }
 
     public function tambah()
     {
-        
+       return view('jabatan.tambah');
     }
 
     public function edit()
     {
-        
+        return view('jabatan.edit');
     }
 
     public function simpan()
