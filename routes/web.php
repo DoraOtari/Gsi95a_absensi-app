@@ -42,4 +42,6 @@ Route::controller(JabatanController::class)->group(function(){
     Route::get('/jabatan/tambah', 'tambah')->name('tambah jabatan');
     Route::get('/jabatan/{jabatan}/edit', 'edit')->name('edit jabatan');
     Route::post('/jabatan', 'simpan')->name('simpan jabatan');
+    Route::delete('jabatan/{jabatan}', 'hapus')->name('hapus jabatan');
+    Route::put('/jabatan/{jabatan}', 'update')->name('update jabatan');
 });

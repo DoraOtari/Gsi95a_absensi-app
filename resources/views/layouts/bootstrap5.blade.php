@@ -16,6 +16,7 @@
         border: 0px;
       }
     </style>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
     {{-- navigasi --}}
@@ -44,7 +45,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link {{ Request::is('jabatan') ? 'gradasi' : '' }}" href="{{ route('jabatan') }}">
+                    <a class="nav-link {{ Request::is('jabatan*') ? 'gradasi' : '' }}" href="{{ route('jabatan') }}">
                       <i class="bi-chevron-double-up"></i> Jabatan
                     </a>
                   </li>
@@ -79,5 +80,12 @@
       <main class="vh-100 continer-fluid px-0">
         @yield('konten')
       </main>
+      {{-- script --}}
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+  <script>
+    new DataTable('#tabelku');
+  </script>
 </body>
 </html>
