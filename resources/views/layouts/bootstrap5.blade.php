@@ -49,6 +49,12 @@
                       <i class="bi-chevron-double-up"></i> Jabatan
                     </a>
                   </li>
+                  {{-- menu karyawan --}}
+                  <li class="nav-item">
+                    <a href="{{ url('/karyawan') }}" class="nav-link {{ Request::is('karyawan*') ? 'gradasi' : '' }}">
+                      <i class="bi-person"></i> Karyawan
+                    </a>
+                  </li>
                 @endauth
               </ul>
               <div class="d-flex mt-3 gap-2" role="search">
