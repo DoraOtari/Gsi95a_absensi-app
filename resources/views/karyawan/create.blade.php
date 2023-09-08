@@ -10,6 +10,17 @@
                 <form action="{{ url('karyawan/create') }}" method="post">
                     @csrf
                     <x-input name="nama" type="text" label="Nama Karyawan" />
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <select name="user_id"  class="form-select">
+                            <option disabled selected>--pilih email--</option>
+                            @foreach ($emails as $col)
+                               <option value="{{ $col->id }}">{{ $col->email }}</option> 
+                            @endforeach
+                        </select>
+                    </div>
+                    <x-input name="tanggal_lahir" type="date" label="Tanggal Lahir" />
+                    <livewire:api-daerah />
                 </form>
             </div>
         </div>

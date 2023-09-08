@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class KaryawanController extends Controller
 {
@@ -23,7 +24,8 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        return view('karyawan.create');
+        $emails = User::select(['email','id'])->get();
+        return view('karyawan.create', compact('emails'));
     }
 
     /**

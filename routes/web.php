@@ -5,7 +5,7 @@ use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Http;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,3 +48,8 @@ Route::controller(JabatanController::class)->group(function(){
 });
 
 Route::resource('karyawan', KaryawanController::class);
+
+Route::get('/test', function(){
+    $respon = HTTP::get("https://dev.farizdotid.com/api/daerahindonesia/provinsi")['provinsi'];
+    dd($respon);
+});
