@@ -24,6 +24,9 @@ class ApiDaerah extends Component
 
     public function render()
     {
-        return view('livewire.api-daerah', ['provinsi' => $this->provinsi()]);
+        return view('livewire.api-daerah', [
+            'provinsi' => $this->provinsi(),
+            'kota' => $this->kota(),
+        ]);
     }
 }

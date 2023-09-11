@@ -3,7 +3,7 @@
         <label class="form-label">Alamat</label>
         <div class="row">
             <div class="col">
-                <select name="provinsi" class="form-select">
+                <select wire:model="provinsiId" wire:change='kota' name="provinsi" class="form-select">
                     <option value="null" selected disabled>--Pilih Provinsi--</option>
                     @foreach ($provinsi as $col)
                         <option value="{{ $col['id'].'/'.$col['nama'] }}">{{ $col['nama'] }}</option>
@@ -13,6 +13,9 @@
             <div class="col">
                 <select name="kota" class="form-select">
                     <option value="null" selected disabled>--Pilih Kota--</option>
+                    @foreach ($kota as $col)
+                        <option value="{{ $col['id'].'/'.$col['nama'] }}">{{ $col['nama'] }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
