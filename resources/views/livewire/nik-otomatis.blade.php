@@ -1,7 +1,7 @@
 <div>
     <div class="mb-3">
         <label class="badge bg-dark form-label">NIK Karyawan</label>
-        <input value="{{ $nik }}" type="text" class="form-control-plaintext" readonly>
+        <input value="{{ $nik }}" name="nik" type="text" class="form-control-plaintext" readonly>
     </div>
     <div class="mb-3">
         <label class="form-label">Email</label>
@@ -12,5 +12,8 @@
             @endforeach
         </select>
     </div>
-    <x-input wire:model="tgl_lahir" name="tanggal_lahir" type="date" label="Tanggal Lahir" />
+    <div class="mb-3">
+        <label  class="form-label">Tanggal Lahir</label>
+        <input type="date" class="form-control" wire:model="tgl_lahir" name="tanggal_lahir" >
+    </div>
 </div>

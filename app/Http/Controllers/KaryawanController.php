@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -36,7 +37,17 @@ class KaryawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       Karyawan::create([
+        "nama" => $request->nama,
+        "nik" => $request->nik,
+        "user_id" => $request->user_id,
+        "tanggal_lahir" => $request->tanggal_lahir,
+        "provinsi" => $request->provinsi,
+        "kota" => $request->kota,
+        "alamat" => $request->alamat,
+       ]);
+
+       return redirect('karyawan')->with('pesan', 'Berhasil tambah karyawan baru');
     }
 
     /**

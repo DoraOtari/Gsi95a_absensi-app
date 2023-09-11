@@ -1,6 +1,13 @@
 @extends('layouts.bootstrap5')
 @section('konten')
 <div class="col-lg-8 mx-auto">
+    {{-- alert --}}
+    @if (session('pesan'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong><i class="bi-check"></i></strong> {{ session('pesan') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     <div class="card border-0">
         <div class="card-body">
             <div class="d-flex justify-content-between">

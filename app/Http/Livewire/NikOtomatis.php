@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class NikOtomatis extends Component
 {
@@ -10,7 +11,8 @@ class NikOtomatis extends Component
 
     public function buatNik()
     {
-        $this->nik = $this->tgl_lahir;
+        $tgl_lahir = Str::remove('-', $this->tgl_lahir);
+        $this->nik = $this->user_id.$tgl_lahir;
         return $this->nik;
         // dd($this->nik);
     }

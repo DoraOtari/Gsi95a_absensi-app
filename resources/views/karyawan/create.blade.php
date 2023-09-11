@@ -7,7 +7,7 @@
                     <i class="bi-person-plus"></i> Profil Karyawan
                 </h4>
                 <hr>
-                <form action="{{ url('karyawan/create') }}" method="post">
+                <form action="{{ url('karyawan') }}" method="post">
                     @csrf
                     <x-input name="nama" type="text" label="Nama Karyawan" />
                     <livewire:nik-otomatis :emails="$emails" />
