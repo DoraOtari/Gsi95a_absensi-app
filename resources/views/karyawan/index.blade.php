@@ -36,16 +36,26 @@
                 <tbody>
                     @forelse ($karyawan as $kol)
                         <tr>
-                            <td><img src="" alt=""></td>
+                            <td>
+                                <a href="{{ asset('storage/'.$kol->user->foto_profil) }}">
+                                    <img width="45" src="{{ asset('storage/'.$kol->user->foto_profil) }}" alt="">
+                                </a>
+                            </td>
                             <td>
                                 <span class="badge bg-info">{{ $kol->nik }}</span> 
                             </td>
                             <td>{{ $kol->nama }}</td>
-                            <td></td>
-                            <td></td>
-                            <td><i class="bi-eye text-info lead"></i></td>
+                            <td>{{ $kol->user->email }}</td>
+                            <td>{{ $kol->jabatan->nama }}</td>
                             <td>
-                                <a href="{{ url('karyawan/'.$kol->id.'/edit') }}">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#detail">
+                                    <i class="bi-eye text-info lead"></i>
+                                </button>
+                                @include('karyawan.modal')               
+                            </td>
+                            <td>
+                                <a href="{{ url('karyawan/'.$kol->id.'/edit') }}" class="btn btn-sm">
                                     <i class="bi-pen text-success lead"></i>
                                 </a>
                             </td>
