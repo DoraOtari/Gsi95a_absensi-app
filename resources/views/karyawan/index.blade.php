@@ -24,6 +24,7 @@
                 <thead>
                     <tr>
                         <th>Foto</th>
+                        <th>NIK</th>
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Jabatan</th>
@@ -33,11 +34,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td colspan="7">
-                            <h4 class="text-center"><i class="bi-search"></i> Data tidak ditemukan</h4>
-                        </td>
-                    </tr>
+                    @forelse ($karyawan as $kol)
+                        <tr>
+                            <td><img src="" alt=""></td>
+                            <td>
+                                <span class="badge bg-info">{{ $kol->nik }}</span> 
+                            </td>
+                            <td>{{ $kol->nama }}</td>
+                            <td></td>
+                            <td></td>
+                            <td><i class="bi-eye text-info lead"></i></td>
+                            <td>
+                                <a href="{{ url('karyawan/'.$kol->id.'/edit') }}">
+                                    <i class="bi-pen text-success lead"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <form action="{{ url('karyawan/'.$kol->id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-sm">
+                                        <i class="bi-trash lead text-danger"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="7">
+                                <h4 class="text-center"><i class="bi-search"></i> Data tidak ditemukan</h4>
+                            </td>
+                        </tr>  
+                    @endforelse
                 </tbody>
             </table>
         </div>

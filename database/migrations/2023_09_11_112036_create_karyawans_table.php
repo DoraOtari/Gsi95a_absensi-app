@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('karyawan', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('jabatan_id')->constrained('jabatan');
             $table->string('nama');
             $table->char('nik', 100);
             $table->string('tanggal_lahir');

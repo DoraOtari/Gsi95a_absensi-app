@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Jabatan;
 
 class KaryawanController extends Controller
 {
@@ -15,7 +16,8 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        return view('karyawan.index');
+        $karyawan = Karyawan::all();
+        return view('karyawan.index', compact('karyawan'));
     }
 
     /**
@@ -26,7 +28,8 @@ class KaryawanController extends Controller
     public function create()
     {
         $emails = User::select(['email','id'])->get();
-        return view('karyawan.create', compact('emails'));
+        $jabatan = Jabatan::select(['nama', 'id'])->get();
+        return view('karyawan.create', compact('emails', 'jabatan'));
     }
 
     /**
@@ -45,6 +48,7 @@ class KaryawanController extends Controller
         "provinsi" => $request->provinsi,
         "kota" => $request->kota,
         "alamat" => $request->alamat,
+        "jabatan_id" => $request->jabatan_id,
        ]);
 
        return redirect('karyawan')->with('pesan', 'Berhasil tambah karyawan baru');
