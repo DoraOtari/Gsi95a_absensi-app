@@ -9,6 +9,15 @@ class NikOtomatis extends Component
 {
     public $emails, $nik, $user_id, $tgl_lahir;
 
+    public function mount($karyawan)
+    {
+        if ($karyawan != null ) {
+            $this->nik = $karyawan->nik;
+            $this->user_id = $karyawan->user_id;
+            $this->tgl_lahir = $karyawan->tanggal_lahir;
+            
+        }
+    }
     public function buatNik()
     {
         $tgl_lahir = Str::remove('-', $this->tgl_lahir);

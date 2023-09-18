@@ -71,9 +71,11 @@ class KaryawanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Karyawan $karyawan)
     {
-        //
+        $emails = User::select(['email','id'])->get();
+        $jabatan = Jabatan::select(['nama', 'id'])->get();
+        return view('karyawan.edit', compact('karyawan','emails','jabatan'));
     }
 
     /**
@@ -85,7 +87,18 @@ class KaryawanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Karyawan::where('id', $id)->update([
+            "nama" => $request->nama,
+            "nik" => $request->nik,
+            "user_id" => $request->user_id,
+            "tanggal_lahir" => $request->tanggal_lahir,
+            "provinsi" => $request->provinsi,
+            "kota" => $request->kota,
+            "alamat" => $request->alamat,
+            "jabatan_id" => $request->jabatan_id,
+           ]);
+    
+           return redirect('karyawan')->with('pesan', 'Berhasil update data karyawan');
     }
 
     /**

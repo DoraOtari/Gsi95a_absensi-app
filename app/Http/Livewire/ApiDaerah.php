@@ -7,8 +7,16 @@ use Illuminate\Support\Facades\Http;
 
 class ApiDaerah extends Component
 {
-    public $provinsiId;
+    public $provinsiId, $kotaId;
 
+    public function mount($karyawan = null)
+    {
+        if ($karyawan != null) {
+            $this->provinsiId = $karyawan->provinsi;
+            $this->kotaId = $karyawan->kota;
+        }
+    }
+    
     public function provinsi()
     {
         $respon = HTTP::get("https://dev.farizdotid.com/api/daerahindonesia/provinsi")['provinsi'];

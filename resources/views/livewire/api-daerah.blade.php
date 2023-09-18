@@ -11,10 +11,10 @@
                 </select>
             </div>
             <div class="col">
-                <select name="kota" class="form-select">
+                <select name="kota" wire:model="kotaId" class="form-select">
                     <option value="null" selected disabled>--Pilih Kota--</option>
-                    @foreach ($kota as $col)
-                        <option value="{{ $col['id'].'/'.$col['nama'] }}">{{ $col['nama'] }}</option>
+                    @foreach ($kota as $col)    
+                        <option  value="{{ $col['id'].'/'.$col['nama'] }}">{{ $col['nama'] }}</option>
                     @endforeach
                 </select>
             </div>
