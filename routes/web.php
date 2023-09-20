@@ -4,8 +4,10 @@ use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\Karyawan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,4 +54,27 @@ Route::resource('karyawan', KaryawanController::class);
 Route::get('/test', function(){
     $respon = HTTP::get("https://dev.farizdotid.com/api/daerahindonesia/provinsi")['provinsi'];
     dd($respon);
+});
+
+Route::get('/gaji', function(){
+    return view('gaji.performa');
+});
+
+Route::post('/gaji', function(){
+    $tanggal = date('d');
+    $bulan= date('m');
+    $tahun = date('Y');
+    $karyawan = Karyawan::where('nik', request('nik'))->select('id')->first();
+
+    $jam = date('H.i');
+    DB::table('presensi')->insert([
+        'tanggal' => $tanggal,
+        'bulan' => $bulan,
+        'tahun' => $tahun,
+        'karyawan_id' => $karyawan->id,
+        'jam' => $jam,
+        'keterangan' => request('keterangan'),
+    ]);
+
+    return redirect('/')->with('pesan', 'Berhasil Absen ');
 });

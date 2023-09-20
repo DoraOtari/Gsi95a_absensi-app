@@ -95,5 +95,6 @@
     new DataTable('#tabelku');
   </script>
   @livewireScripts
+  @stack('script')
 </body>
 </html>
